@@ -1,0 +1,58 @@
+﻿@model BookStore.Credit_Card
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Credit_Card</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExpDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExpDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CCV)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CCV)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreditType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreditType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Customer.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Customer.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CardID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

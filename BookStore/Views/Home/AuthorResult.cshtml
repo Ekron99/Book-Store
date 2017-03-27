@@ -1,0 +1,39 @@
+﻿@model List<Author>
+
+@{
+    ViewBag.Title = "AuthorResult";
+}
+
+<h2>AuthorResult</h2>
+
+<div class="text-primary">
+    <h3>
+        Search text: <strong><u>@ViewBag.SearchText</u></strong>
+    </h3>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            First Name
+        </th>
+        <th>
+            Last Name
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", "Author", new { id = item.AuthorID }, null)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,66 @@
+﻿@model List<BookStore.Models.BookModel>
+@{
+    ViewBag.Title = "Results";
+}
+
+<h2>Results</h2> @Html.ActionLink("Back to home", "Index", "Home", null, new { @class = "btn btn-default btn-sm"})
+<div class="text-primary">
+    <h3>
+        Search text: <strong><u>@ViewBag.SearchText</u></strong>
+    </h3>
+</div>
+
+@foreach (var item in Model)
+{
+    <div class="book col-md-6" style="max-height: 330px;">
+        <h3>
+            @item.book.Title
+        </h3>
+        <h4>
+            Price: $@item.book.Cost
+            <br />
+            Inventory: @item.book.Inventory
+        </h4>
+
+        <br />
+        <ul style="list-style-type:none">
+            <li>Author: <strong>@item.author.FirstName @item.author.LastName</strong></li>
+            <li>ISBN: <strong>@item.book.ISBN</strong></li>
+            <li>Publisher: <strong>@item.book.Publisher.Name</strong></li>
+            <li>Edition: <strong>@item.book.Edition</strong></li>
+            <li>Number of Pages: <strong>@item.book.PageNum</strong></li>
+            <li>Language: <strong>@item.book.Language</strong></li>
+            <li>Publish Year: <strong>@item.book.PublishYear</strong></li>
+        </ul>
+
+        @if (item.book.Inventory > 0)
+        {
+
+            using (Html.BeginForm("AddToCart", "Shopping", new { @id = item.book.BookID }, FormMethod.Post, null))
+            {
+                <div class="col-md-5">
+                    <label for="Quantity ">
+                        <input type="number" min="1" value="1" style="width: 50px;" class="input-group" id="quantity" name="Quantity" />
+                    </label>
+                    <input type="submit" value="Add to Cart" class="btn btn-default" id="id" />
+                </div>
+            }
+        }
+        else
+        {
+            <div class="alert-warning col-md-5">
+                <p>
+                    <h4>
+                        This product is sold out!
+                    </h4>
+                </p>
+            </div>
+        }
+        <br />
+    </div>
+
+}
+
+<div class="row">
+    @* space for footer *@
+</div>

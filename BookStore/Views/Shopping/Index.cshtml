@@ -1,0 +1,135 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Your Cart</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            ISBN
+        </th>
+        <th>
+            Title
+        </th>
+        <th>
+            Publish Year
+        </th>
+        <th>
+            Number of Pages
+        </th>
+        <th>
+            Language
+        </th>
+        <th>
+            Edition
+        </th>
+        <th>
+            Cover Type
+        </th>
+        <th>
+            Amount
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @item.ISBN
+            </td>
+            <td>
+                @item.Title
+            </td>
+            <td>
+                @item.PublishYear
+            </td>
+            <td>
+                @item.PageNum
+            </td>
+            <td>
+                @item.Language
+            </td>
+            <td>
+                @item.Edition
+            </td>
+            <td>
+                @item.CoverType
+            </td>
+            <td>
+                @item.Amount
+            </td>
+            <td>
+                @item.Price
+            </td>
+            <td>
+                @if (User.IsInRole("A"))
+                {
+                    @Html.ActionLink("Edit", "Edit", "Book", new { id = item.BookID }, null);
+                    @:|
+                    @Html.ActionLink("Delete", "Delete", "Book", new { id = item.BookID }, null);
+                }
+                else
+                {
+                    @Html.ActionLink("Details", "Details", "Book", new { id = item.BookID }, null)
+                    
+                }
+                
+            </td>
+            <td>
+                @using (Html.BeginForm("RemoveFromCart", "Shopping", new { @id = item.BookID }, FormMethod.Post, null))
+                {
+
+                    <input type="number" id="quantity" min="1" style="width:50px" value="1"  name="quantity"/>
+                    <input type="submit" class="btn btn-default" value="Remove" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+<div class="row">
+    <div class="row">
+    </div>
+    <p>
+        @{
+            decimal price = -1;
+            try
+            {
+                price = @Model[0].TotalPrice;
+            }
+            catch (Exception e)
+            {
+                price = -1;
+            }
+            if (price == -1)
+            {
+                @:There is nothing in your cart!
+            }
+            else
+            {
+                @:<h3>
+                    @:Total Price: $@price
+                @:</h3> <br />
+            }
+        }
+</p>
+</div>
+
+<div class="row">
+    @if (price == -1)
+    {
+        <p>
+            @Html.ActionLink("Shop for more books!", "Index", "Book", null, new { @class = "btn btn-default"})
+        </p>
+    }
+    else
+    {
+        @Html.ActionLink("Checkout", "Checkout", "Shopping", new { User.Identity.Name}, new { @class = "btn btn-default btn-lg" })
+    }
+</div>

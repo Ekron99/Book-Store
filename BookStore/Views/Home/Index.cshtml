@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div class="jumbotron text-center">
+    <h1>
+        @if (User.Identity.IsAuthenticated)
+        {
+            BookStoreEntities db = new BookStoreEntities();
+            var username = User.Identity.Name;
+            Customer name = db.Customers.Where(x => x.Username == username).First();
+            
+            <text>Welcome to Novel Thoughts, @name.FirstName</text>
+            
+        }
+        else
+        {
+            @:Welcome to Novel Thoughts
+        }
+    </h1>
+    <p>
+        Welcome to Novel Thoughts, from here you can access all
+        of the amazing titles and authors we have to offer.
+        To get started just search for what you're looking for,
+        be it a book or an author!
+    </p>
+
+    @using (Html.BeginForm("Results", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="col-md-2 col-xs-3">
+            <select class="form-control" id="type" name="type">
+                <option value="1">Books</option>
+                <option value="2">Authors</option>
+                <option value="3">Publishers</option>
+            </select>
+        </div>
+        <div class="col-md-8 col-xs-5">
+            <input name="text" id="text" type="text" class="form-control" aria-label="...">
+        </div>
+        <div class="col col-md-1 col-xs-1">
+            <button type="submit" class="btn btn-default">Search</button>
+        </div>
+    }
+    <br />
+    </div>
+

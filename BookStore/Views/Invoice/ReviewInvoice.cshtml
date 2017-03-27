@@ -1,0 +1,103 @@
+﻿@model BookStore.Models.InvoiceModel
+@{
+    ViewBag.Title = "Review Invoice";
+}
+
+<h2>Review Your Order</h2>
+<br />
+<div class="row">
+    <div class="col-xs-12 col-md-4 col-md-push-4">
+        @* Books *@
+
+        @for (int i = 0; i < Model.Books.Count; i++)
+        {
+            <ul style="list-style-type:none">
+                <li>
+                    <h3>
+                        @Model.Books.ElementAt(i).Title
+                    </h3>
+                </li>
+                <li>
+                    ISBN: @Model.Books.ElementAt(i).ISBN
+                </li>
+                <li>
+                    Price: @Model.Prices.ElementAt(i)
+                </li>
+                <li>
+                    Amount: @Model.Amounts.ElementAt(i)
+                </li>
+                <li>
+                    PublishYear: @Model.Books.ElementAt(i).PublishYear
+                </li>
+                <li>
+                    Number of Pages: @Model.Books.ElementAt(i).PageNum
+                </li>
+                <li>
+                    Language: @Model.Books.ElementAt(i).Language
+                </li>
+                <li>
+                    Edition: @Model.Books.ElementAt(i).Edition
+                </li>
+                <li>
+                    Cover Type: @Model.Books.ElementAt(i).CoverType
+                </li>
+                <li>
+                    Publisher: @Model.Publishers.ElementAt(i)
+                </li>
+            </ul>
+            <br />
+        }
+
+    </div>
+
+    <div class="col-xs-12 col-md-4 col-md-pull-4">
+        @* Shipping address(?) *@
+        <h3>
+            Shipping Address
+        </h3>
+        <p>
+            <h4>
+                @Model.Shipping.Street <br />
+                @Model.Shipping.City, @Model.Shipping.State <br />
+                @Model.Shipping.Zip
+            </h4>
+        </p>
+
+        <h3>
+            Credit Card
+        </h3>
+        <p>
+            <h4>
+                Credit card ending in: @Model.Card.Number.Substring(12)
+            </h4>
+        </p>
+
+    </div>
+
+    <div class="col-xs-12 col-md-4">
+        @* Billing address(?) *@
+        <h3>
+            Billing Address
+        </h3>
+        <p>
+            <h4>
+                @Model.Billing.Street <br />
+                @Model.Billing.City, @Model.Billing.State <br />
+                @Model.Billing.Zip
+            </h4>
+
+        </p>
+    </div>
+
+</div>
+<br />
+
+<h3>
+    Total Price $@Model.TotalPrice
+</h3>
+@using (Html.BeginForm("ConfirmOrder", "Invoice", new { @cartID = Model.Cart.CartID, @shipID = Model.Shipping.ShipID, @billID = Model.Billing.BillID, @cardID = Model.Card.CardID }, FormMethod.Post, null))
+{
+    <input type="submit" value="Confirm Order" class="btn btn-default"/>
+}
+
+

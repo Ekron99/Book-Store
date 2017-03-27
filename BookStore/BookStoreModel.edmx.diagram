@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c27d906f1b5e4cf096d176f0d301f2b3" Name="Diagram1">
+        <EntityTypeShape EntityType="BookStoreModel.Author" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Billing" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Book" Width="1.5" PointX="3" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Book_Bought" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Book_Invoice" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Cart_Book" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Category" Width="1.5" PointX="5.25" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Credit_Card" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Customer" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Invoice" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Publisher" Width="1.5" PointX="0.75" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Shipping" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.Shopping" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStoreModel.sysdiagram" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="BookStoreModel.BillFK" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.BillingFK" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.BookToCartFK" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.BookToPubFK" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.CartToBookFK" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.FK__Cart_Book__Custo__6D6238AF" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.CardFK" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4.5" PointY="10.001152846153847" />
+          <ConnectorPoint PointX="4.6910744349011209" PointY="9.8100784112527251" />
+          <ConnectorPoint PointX="4.8089255650988791" PointY="9.6922272810549686" />
+          <ConnectorPoint PointX="4.875" PointY="9.6261528461538468" />
+          <ConnectorPoint PointX="4.875" PointY="9.8852478982371785" />
+          <ConnectorPoint PointX="5.25" PointY="9.5102478982371785" />
+        </AssociationConnector>
+        <AssociationConnector Association="BookStoreModel.CustomerFK" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.Shopping_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.ShipFK" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.FK_SHOPPING_SHOPPING" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.Book_Author" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.Book_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStoreModel.FK__Book_Invo__BookI__0BE6BFCF" />
+        <AssociationConnector Association="BookStoreModel.FK__Book_Invo__Invoi__0CDAE408" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>Here you can edit, create, and delete any information available</h2>
+<div class="row">
+    <div class="col-md-5 well">
+        <h3>Customers</h3>
+        <ul>
+            <li>@Html.ActionLink("View all customers", "Index", "Customer", null, null)</li>
+            <li>@Html.ActionLink("Create a customer", "Create", "Customer", null, null)</li>
+        </ul>
+    </div>
+
+    <div class="col-md-5 col-md-offset-1 well">
+        <h3>Books</h3>
+        <ul>
+            <li>@Html.ActionLink("View all books", "Index", "Book", null, null)</li>
+            <li>@Html.ActionLink("Create a books", "Create", "Book", null, null)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5 well">
+        <h3>Authors</h3>
+        <ul>
+            <li>@Html.ActionLink("View all authors", "Index", "Author", null, null)</li>
+            <li>@Html.ActionLink("Create a authors", "Create", "Author", null, null)</li>
+        </ul>
+    </div>
+
+    <div class="col-md-5 col-md-offset-1 well">
+        <h3>Publishers</h3>
+        <ul>
+            <li>@Html.ActionLink("View all publishers", "Index", "Publisher", null, null)</li>
+            <li>@Html.ActionLink("Create a publishers", "Create", "Publisher", null, null)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5 well">
+        <h3>Reports</h3>
+        <ul>
+            <li>@Html.ActionLink("View Customer Report", "Customer", "Report", null, null)</li>
+            <li>@Html.ActionLink("View Product Report", "Product", "Report", null, null)</li>
+        </ul>
+    </div>
+</div>
+

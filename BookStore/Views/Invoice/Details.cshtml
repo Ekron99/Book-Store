@@ -1,0 +1,81 @@
+﻿@model BookStore.Models.InvoiceModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Status
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            Total Price
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPrice)
+        </dd>
+
+        <dt>
+            Street
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Shipping.Street)
+        </dd>
+
+        <dt>
+            Credit Card
+        </dt>
+        @{ 
+            var substring = Model.Card.Number.Substring(12);
+        }
+        <dd>
+            @Html.DisplayFor(model => substring)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@for (int n = 0; n < Model.Books.Count; n++)
+{
+    <div class="book col-md-6">
+        <h3>
+            @Model.Books.ElementAt(n).Title
+        </h3>
+        <h4>
+            Price: $@Model.Books.ElementAt(n).Cost
+            <br />
+            Inventory: @Model.Books.ElementAt(n).Inventory
+        </h4>
+
+        <br />
+        <ul style="list-style-type:none">
+            <li>Author: <strong>@Model.Authors.ElementAt(n).FirstName @Model.Authors.ElementAt(n).LastName</strong></li>
+            <li>ISBN: <strong>@Model.Books.ElementAt(n).ISBN</strong></li>
+            <li>Publisher: <strong>@Model.Books.ElementAt(n).Publisher.Name</strong></li>
+            <li>Edition: <strong>@Model.Books.ElementAt(n).Edition</strong></li>
+            <li>Number of Pages: <strong>@Model.Books.ElementAt(n).PageNum</strong></li>
+            <li>Language: <strong>@Model.Books.ElementAt(n).Language</strong></li>
+            <li>Publish Year: <strong>@Model.Books.ElementAt(n).PublishYear</strong></li>
+        </ul>
+        <br />
+    </div>
+}
+
+<div class="row">
+    @* space for footer *@
+</div>

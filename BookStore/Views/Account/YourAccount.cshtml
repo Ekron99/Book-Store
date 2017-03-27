@@ -1,0 +1,101 @@
+﻿@model BookStore.Models.InvoiceModel
+@{
+    ViewBag.Title = "Your Account";
+}
+
+<h2>Your Account</h2>
+
+
+<div class="row">
+    <div class="col-md-5 well">
+        <h3>Your Orders</h3>
+        <ul>
+            <li>@Html.ActionLink("View your previous orders", "Index", "Invoice", null, null)</li>
+        </ul>
+    </div>
+
+    <div class="col-md-5 col-md-offset-1 well">
+        <h3>Login</h3>
+        <ul>
+            <li>@Html.ActionLink("Change your password", "ChangePassword", "Account", null, null)</li>
+        </ul>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5 well">
+        
+
+        @if (Model.Shipping == null)
+            {
+            <h3>You haven't entered your shipping information</h3>
+                using (Html.BeginForm("Create", "Shipping"))
+                {
+                    <input name="B" type="button" value="Enter Info" class="btn btn-default"/>
+                }
+        }
+        else
+        {
+            <h3>
+                Shipping Address
+            </h3>
+                <p>
+                    <h4>
+                        @Model.Shipping.Street <br />
+                        @Model.Shipping.City, @Model.Shipping.State <br />
+                        @Model.Shipping.Zip
+                    </h4>
+                </p>
+                @Html.ActionLink("Edit your information", "Edit", "Shipping", new { @id = Model.ShippingID }, null)
+        }
+
+    </div>
+
+    <div class="col-md-5 col-md-offset-1 well">
+        @if (Model.Shipping == null)
+            {
+            <h3>You haven't entered your billing information</h3>
+            using (Html.BeginForm("Create", "Billing"))
+            {
+                <input name="Billing" type="button" value="Enter Info" class="btn btn-default" />
+            }
+        }
+        else
+        {
+            <h3>
+                Billing Address
+            </h3>
+            <p>
+                <h4>
+                    @Model.Billing.Street <br />
+                    @Model.Billing.City, @Model.Billing.State <br />
+                    @Model.Billing.Zip
+                </h4>
+            </p>
+                @Html.ActionLink("Edit your information", "Edit", "Billing", new { @id = Model.BillingID }, null)
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-5 well">
+
+        @if (Model.Card == null)
+        {
+            <h3>You haven't entered your payment information</h3>
+            using (Html.BeginForm("Create", "CreditCard", null))
+            {
+                <input value="Create Credit Card" name="CreditCard" class="btn btn-default" />
+            }
+        }
+        else
+        {
+            <h3>Payment Information</h3>
+            <h4>Card ending in <strong>@Model.Card.Number.Substring(12)</strong></h4>
+            <p>@Html.ActionLink("Edit your payment info", "Edit", "CreditCard", new { @id = Model.CardID }, null)</p>
+        }
+
+
+
+        </div>
+    </div>

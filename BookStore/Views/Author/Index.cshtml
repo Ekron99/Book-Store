@@ -1,0 +1,47 @@
+﻿@model IEnumerable<BookStore.Author>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@if (User.IsInRole("A"))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @if (User.IsInRole("A"))
+                {
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AuthorID });
+                    @:|
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AuthorID });
+                    @:|
+                }
+                @Html.ActionLink("Details", "Details", new { id = item.AuthorID })
+            </td>
+        </tr>
+    }
+
+</table>

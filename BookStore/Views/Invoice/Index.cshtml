@@ -1,0 +1,66 @@
+﻿@model IEnumerable<BookStore.Invoice>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Your Invoices</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Billing.Street)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Credit_Card.Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Shipping.Street)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Billing.Street)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Credit_Card.Number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Shipping.Street)
+        </td>
+        <td>
+            @if (User.IsInRole("A"))
+            {
+            @Html.ActionLink("Edit", "Edit", new { id = item.InvoiceID }) 
+                @:|
+            @Html.ActionLink("Details", "Details", new { id = item.InvoiceID }) 
+                @:|
+            @Html.ActionLink("Delete", "Delete", new { id = item.InvoiceID })
+            } else
+            {
+            @Html.ActionLink("Details", "Details", new { id = item.InvoiceID })
+            }
+            
+        </td>
+    </tr>
+}
+
+</table>
